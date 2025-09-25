@@ -1,0 +1,17 @@
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>My first blog</title>
+    </head>
+    <body>
+        <h>My first blog</h1>
+        {% for post in posts %}
+            <div>
+                <h2><a href="#">{{ post.title }}</a></h2>
+                <p>{{ post.text|linebreaksbr }}</p>
+                <p>Published: {{ post.published_date }}</p>
+            </div>
+        {% endfor %}
+    </boby>
+    </html>   
