@@ -1,7 +1,5 @@
 from django.db import models
 from django.utils import timezone
-<<<<<<< HEAD
-
 class Post(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
@@ -10,7 +8,7 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-=======
+
 from django.contrib.auth.models import User 
 
 class Post(models.Model):
@@ -40,4 +38,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text[:20] + '...' 
->>>>>>> 25d3f77 (Deployment files setup and project initialization)
