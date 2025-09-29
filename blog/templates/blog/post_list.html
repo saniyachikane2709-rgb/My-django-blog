@@ -1,0 +1,40 @@
+`html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>माझा ब्लॉग - पोस्ट्स</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 20px; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .header { text-align: center; margin-bottom: 30px; }
+        .post { border-bottom: 1px solid #ddd; padding-bottom: 20px; margin-bottom: 20px; }
+        .post h2 { color: #333; margin-top: 0; }
+        .meta { font-size: 0.9em; color: #777; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>'Welcome to my blog'</h1> 
+            <p>येथे माझ्या ब्लॉग पोस्ट्सची यादी आहे.</p>
+        </div>
+
+        {% for post in posts %}
+            <div class="post">
+                <h2>{{ post.title }}</h2> 
+
+                <div class="meta">
+                    लेखक: {{ post.author.username }} | प्रकाशित: {{ post.published_date|date:"d M Y" }}
+                </div>
+                
+                <p>{{ post.content|truncatechars:200 }}</p> 
+
+                <a href="{% url 'post_detail' pk=post.pk %}">पुढे वाचा...</a>
+            </div>
+        {% empty %}
+            <p>ब्लॉगवर अजून कोणतीही पोस्ट प्रकाशित झालेली नाही.</p>
+        {% endfor %}
+
+    </div>
+</body>
+</html>

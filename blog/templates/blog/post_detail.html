@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ post.title }}</title>
+    </head>
+    <body>
+        <h1>{{ post.title }}</h1>
+        
+        {% if user.is_authenticated %}
+            <small>
+                Logged in as: **{{ user.username }}** | 
+                <a href="{% url 'logout' %}">Logout</a>
+            </small>
+        {% else %}
+            <small>
+                <a href="{% url 'login' %}">Login</a>
+            </small>
+        {% endif %}
+        
+        <p>Published: {{ post.published_date }}</p>
+        <p>{{ post.content }}</p>
+
+       <h1>{{ post.title }}</h1>
+    
+        {% if user.is_superuser %}
+        <a href="{% url 'post_delete' pk=post.pk %}">Delete postा</a>
+        {% endif %}
+
+        <p>Published: {{ post.published_date }}</p>
+    
+        <p>{{ post.content|linebreaksbr }}</p>
+ 
+        <hr>
+        
+        <h2>Comments ({{ comments|length }})</h2> 
+        
+        {% for comment in comments %}
+            <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 5px; background: #fff;">
+                <strong>{{ comment.author }}</strong> 
+                <small>({{ comment.created_date|date:"d M Y H:i" }})</small>
+                
+                <p style="margin-top: 5px;">{{ comment.text }}</p>
+
+                {% if user.is_superuser %}
+                    <form method="POST" action="{% url 'comment_delete' pk=comment.pk %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" style="background: red; color: white; border: none; padding: 5px; border-radius: 3px; cursor: pointer;">डिलीट करा</button>
+                    </form>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No comment yet on this post.</p>
+        {% endfor %}
+        
+        <hr>
+        <h3>Add New Comment</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }} 
+            <button type="submit" style="background: green; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">कमेंट पोस्ट करा</button>
+        </form>
+
+        <hr>
+        <p><a href="{% url 'blog_list' %}">← View All Posts</a></p>
+    </body>
+</html>
