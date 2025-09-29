@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 """
 Django settings for myblog project.
 
@@ -50,7 +49,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-=======
 import os
 from pathlib import Path
 
