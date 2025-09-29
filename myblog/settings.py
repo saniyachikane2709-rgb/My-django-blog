@@ -79,13 +79,11 @@ MIDDLEWARE = [
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
->>>>>>> 25d3f77 (Deployment files setup and project initialization)
 ]
 
 ROOT_URLCONF = 'myblog.urls'
 
 TEMPLATES = [
-<<<<<<< HEAD
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'blog', 'templates')],
@@ -98,7 +96,6 @@ TEMPLATES = [
             ],
         },
     },
-=======
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
             'DIRS': [BASE_DIR / 'blog' / 'templates'],
@@ -112,15 +109,9 @@ TEMPLATES = [
                 ],
             },
         },
->>>>>>> 25d3f77 (Deployment files setup and project initialization)
 ]
 
 WSGI_APPLICATION = 'myblog.wsgi.application'
-
-<<<<<<< HEAD
-
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -128,11 +119,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -147,15 +133,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
-# Internationalization
-# https://docs.djangoproject.com/en/5.2/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
-=======
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -181,23 +161,11 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Kolkata'
->>>>>>> 25d3f77 (Deployment files setup and project initialization)
-
 USE_I18N = True
 
 USE_TZ = True
 
-<<<<<<< HEAD
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
-
 STATIC_URL = 'static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-=======
 STATIC_URL = '/static/'
->>>>>>> 25d3f77 (Deployment files setup and project initialization)
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
