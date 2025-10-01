@@ -24,10 +24,11 @@ SECRET_KEY = 'django-insecure-^vqhn6!70f065_71md$$!h!&c_i93il79&0y^b3qj$k!ecd#s^
 
 # SECURITY WARNING: don't run with debug turned on in production!
 import os
-#
-DEBUG = False
+import dj_database_url 
 
-ALLOWED_HOSTS = ['127.0.0.1', '.onrender.com', 'saniya-django-blog.onrender.com']
+DEBUG = False
+SECRET_KEY = os.environ.get('SECRET_KEY')
+ALLOWED_HOSTS = ['saniya-django-blog.onrender.com', '127.0.0.1']
 
 INSTALLED_APPS = [
         'django.contrib.admin',
@@ -65,17 +66,15 @@ TEMPLATES = [
             },
         },
 ]
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
-
 WSGI_APPLICATION = 'myblog.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'default': dj_database_url.config(
+            default='sqlite:///db.sqlite3',  
+            conn_max_age=600  
+        )
     }
-}
+    
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -89,30 +88,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
-]
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-      }
-}
-    
-AUTH_PASSWORD_VALIDATORS = [
-        {
-            'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-        },
-        {
-            'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-        },
-        {
-            'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-        },
-        {
-            'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-        },
 ]
 
 LANGUAGE_CODE = 'en-us'
