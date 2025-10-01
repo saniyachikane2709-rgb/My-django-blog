@@ -7,4 +7,4 @@ urlpatterns = [
     path('', include('django.contrib.auth.urls')), 
     
     path('', include('blog.urls')),
-   
+]   
