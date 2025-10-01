@@ -1,12 +1,10 @@
-<<<<<<< HEAD
 from django.shortcuts import render
 from .models import Post
 
 def post_list(request):
     posts = Post.objects.all()
     return render(request, 'blog/post_list.html', {'posts': posts})
-=======
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, render
 from django.utils import timezone 
 from .models import Post, Comment
 from .forms import CommentForm 
@@ -66,4 +64,4 @@ def post_delete(request, pk):
     else:
         
         return redirect('post_detail', pk=post.pk)
->>>>>>> 25d3f77 (Deployment files setup and project initialization)
+

@@ -2,11 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-<<<<<<< HEAD
-    path('', views.post_list, name='post_list')
-]
-
-=======
+    path('', views.post_list, name='post_list'),
 
     path('', views.post_list, name='blog_list'),
 
@@ -18,4 +14,5 @@ urlpatterns = [
 
     path('comment/<int:pk>/delete/', views.comment_delete, name='comment_delete'),
 ]
->>>>>>> 25d3f77 (Deployment files setup and project initialization)
+
+

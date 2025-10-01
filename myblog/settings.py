@@ -27,7 +27,7 @@ import os
 #
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', '.onrender.com', 'saniya-django-blog.onrender.com']
 
 INSTALLED_APPS = [
         'django.contrib.admin',
@@ -121,7 +121,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
-
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
