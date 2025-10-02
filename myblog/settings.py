@@ -36,7 +36,6 @@ DATABASES = {
             conn_max_age=600
         )
     }
-
 MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',
         'whitenoise.middleware.WhiteNoiseMiddleware',
