@@ -12,22 +12,13 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^vqhn6!70f065_71md$$!h!&c_i93il79&0y^b3qj$k!ecd#s^'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 import os
 import dj_database_url 
 
 DEBUG = False
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'XXX_THIS_IS_A_FALLBACK_KEY_FOR_SAFETY_XXX')
 ALLOWED_HOSTS = ['saniya-django-blog.onrender.com', '127.0.0.1']
 
 INSTALLED_APPS = [
@@ -39,6 +30,13 @@ INSTALLED_APPS = [
         'django.contrib.staticfiles',
         'blog',
 ]
+DATABASES = {
+    'default': dj_database_url.config(
+            default='sqlite:///db.sqlite3',
+            conn_max_age=600
+        )
+    }
+
 MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',
         'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -68,12 +66,6 @@ TEMPLATES = [
 ]
 WSGI_APPLICATION = 'myblog.wsgi.application'
 
-DATABASES = {
-    'default': dj_database_url.config(
-            default='sqlite:///db.sqlite3',  
-            conn_max_age=600  
-        )
-    }
     
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -99,7 +91,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STORAGES = {
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
